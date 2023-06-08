@@ -1,0 +1,34 @@
+#cadastrar{
+	margin-top: 2%;
+	background-color: #fb4f3b;
+	color: white;
+}
+label{
+	margin-top: 10px;
+	color:black;
+}
+h1{
+	color: black;
+	text-align: center;
+}
+.link{
+	text-align: right;
+	padding: 8px;
+	color: white;
+}
+.fundo{
+	background-image: url(../../images/fundoMar.jpg);
+	height: 100vh;
+	background-size: cover;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+.container-fluid{
+	padding: 0px;
+	background: none
+}
+.boxLogin{
+	margin-top: 5%;
+}
+body{}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro Usuario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../public/css/login/registerLogin.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="col-md-5 boxLogin">
+            <form action="php_action/createUsuario.php" method="post">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Cadastrar</h1>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Nome</label>
+                        <input type="text" name="nomePessoa" class="form-control">
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <label>Telefone</label>
+                        <input type="number" name="nrPessoa" class="form-control">
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label>Usuario</label>
+                        <input type="text" name="nomeUsuario" class="form-control">
+                    </div>
+                    
+                    <!-- aqui vem um select para a opção de administrador ou funcionario -->
+                    
+                    <div class="col-md-6">
+                        <label>Nivel de Acesso</label>
+                        <select class="form-control" name="tipoUsuario">
+                          <option selected="selected" value="administrador">Administrador</option>
+                          <option value="funcionario">Funcionario</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <label>E-mail</label>
+                        <input type="text" name="email" class="form-control">
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <label>Senha</label>
+                        <input type="password" name="senhaUsuario" class="form-control">
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <label>Confirmar Senha</label>
+                        <input type="password" name="confirmSenhaUsuario" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="link">  
+                            Já tem conta?
+                            <a href="../../index.html"> Ir para Login </a>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="botao">
+                    <button type="submit" class="form-control" id="cadastrar" name="btnCadastrar">CADASTRAR</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-7 fundo"></div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</body>
+</html>

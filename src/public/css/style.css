@@ -1,0 +1,62 @@
+/*HEADER*/
+#salva{
+	margin-top: 2%;
+	background-color: #fb4f3b;
+	color: white;
+}
+label{
+	margin-top: 10px;
+	color:white;
+}
+h1{
+	color: black;
+	float: left;
+}
+ul{
+	display: block;
+	margin-top: 10px;
+}
+#funcionarioNovo{
+	margin-top: 20px;
+}
+.box{
+	margin-top: 5%;
+	margin-bottom: 300px;
+}
+.formTable{
+	width: 90%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.menu{
+	background-color: #363636;
+	position: fixed;
+	z-index: 1000;
+	height: 100vh;
+}
+.tabelaDireita{
+	float: right;
+}
+.container-fluid{
+	padding: 0px;
+}
+ul li{
+	padding: 10px;
+}
+ul li a{
+	color: white;
+}
+ul li a:hover{
+	color: lightgrey;
+	text-decoration: none;
+}
+.btn{
+	margin-top: 20px;
+}
+img{
+	margin-right:20px;
+}
+ul{
+	padding:0px;;
+}
