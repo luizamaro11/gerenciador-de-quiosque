@@ -1,11 +1,24 @@
+<?php
+
+// Inicialize a sessão
+session_start();
+ 
+// Verifique se o usuário está logado, se não, redirecione-o para uma página de login
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: ../../index.html");
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../public/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../public/css/style.css">
     <title>Mesas</title>
 </head>
 <body>
@@ -14,10 +27,10 @@
             <div class="row linhaHeader">
                 <div class="col-md-12 cabecalho">
                     <ul>
-                        <li><a href="./tables.html"><img src="../../images/mesa.png" alt="">Mesas</a></li>
+                        <li><a href="./tables.php"><img src="../../images/mesa.png" alt="">Mesas</a></li>
                         <li><a href="../employees/employees.html"><img src="../../images/funcionario.png" alt="">Funcionário</a></li>
                         <li><a href="../products/products.html"><img src="../../images/produto.png" alt="">Produtos</a></li>
-                        <li><a href="../../index.html"><img src="../../images/sair.png" alt="">Sair</a></li>
+                        <li><a href="../../../app/login/logout.php"><img src="../../images/sair.png" alt="">Sair</a></li>
                     </ul>                  
                 </div>
             </div>

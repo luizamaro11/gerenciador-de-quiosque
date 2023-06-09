@@ -1,4 +1,4 @@
-#entrar{
+#enter{
 	margin-top: 2%;
 	background-color: #fb4f3b;
 	color: white;
@@ -6,6 +6,7 @@
     text-align: center;
     text-decoration: none;
 }
+
 label{
 	margin-top: 10px;
 	color:black;
