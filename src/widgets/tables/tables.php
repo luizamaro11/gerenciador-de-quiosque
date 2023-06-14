@@ -1,5 +1,8 @@
 <?php
 
+require_once(__DIR__ . "/../../../app/config/config.php");
+require_once(__DIR__ . "/../../../app/tables/listTables.php");
+
 // Inicialize a sessão
 session_start();
  
@@ -27,10 +30,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             <div class="row linhaHeader">
                 <div class="col-md-12 cabecalho">
                     <ul>
-                        <li><a href="./tables.php"><img src="../../images/mesa.png" alt="">Mesas</a></li>
-                        <li><a href="../employees/employees.html"><img src="../../images/funcionario.png" alt="">Funcionário</a></li>
-                        <li><a href="../products/products.html"><img src="../../images/produto.png" alt="">Produtos</a></li>
-                        <li><a href="../../../app/login/logout.php"><img src="../../images/sair.png" alt="">Sair</a></li>
+                        <li><a href="./tables.php"><img src="../../public/images/mesa.png" alt="">Mesas</a></li>
+                        <li><a href="../employees/employees.html"><img src="../../public/images/funcionario.png" alt="">Funcionário</a></li>
+                        <li><a href="../products/products.html"><img src="../../public/images/produto.png" alt="">Produtos</a></li>
+                        <li><a href="../../../app/login/logout.php"><img src="../../public/images/sair.png" alt="">Sair</a></li>
                     </ul>                  
                 </div>
             </div>
@@ -42,7 +45,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <h3>Mesas</h3>
                     </div>
                     <div class="col-md-3">
-                            <button class="btn btn-block btn-info" data-toggle="modal" data-target="#newTable" id="funcionarioNovo">ADICIONAR MESA</button>
+                        <button class="btn btn-block btn-info" data-toggle="modal" data-target="#newTable" id="funcionarioNovo">ADICIONAR MESA</button>
                     </div>
                 </div>
                 
@@ -51,32 +54,20 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Numero da mesa</th>
-                                <th scope="col">Ação</th>
+                                    <th scope="col">Numero da mesa</th>
                                 </tr>
                             </thead>
                             <tbody id="listarMesas">
-                                <tr>
-                                    <th scope="row" style="color: inherit; font-size: 20px;">Mesa 1
-                                    </th>
-                                    <td>
-                                        <button id="1" class="btn-block btn-danger">EXCLUIR</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" style="color: inherit; font-size: 20px;">Mesa 2
-                                    </th>
-                                    <td>
-                                        <button id="2" class="btn-block btn-danger">EXCLUIR</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" style="color: inherit; font-size: 20px;">Mesa 3
-                                    </th>
-                                    <td>
-                                        <button id="3" class="btn-block btn-danger">EXCLUIR</button>
-                                    </td>
-                                </tr>
+                                <?php if (!empty(listTables($pdo))): ?>
+                                    <?php foreach (listTables($pdo) as $table): ?>
+                                        <tr>
+                                            <th style="color: inherit; font-size: 20px; width: 88%;">Mesa <?= $table["number"] ?></th>
+                                            <td>
+                                                <a href="/gerenciador-de-quiosque/app/tables/delete.php?id=<?= $table["id"] ?>" id="delete"><button style="width: 100px;" class="btn-block btn-danger">EXCLUIR</button></a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
@@ -84,31 +75,34 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             </div>
         </div>
     </div>
-    
+        
     <!--Modal do Botão Adicionar-->
     <div id="newTable" class="modal fade" role="dialog">
         <div class="modal-dialog">
-          
-            <!--Container da modal--> 
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Adicionando Mesa</h4>
-                </div>
-                <div class="modal-body">
-                    <label for="numeroMesa" style="color: #000">Número da mesa</label>
-                    <input id="numeroMesa" type="text" class="form-control" name="numeroMesa" placeholder="digite o número da mesa">
-                </div>
-                
-                <div class="modal-footer">
-                    <button id="salvar" type="button" class="btn btn-default btn-success" data-dismiss="modal">SALVAR</button>
-                    <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">CANCELAR</button>
-                </div>
-            </div>
-        </div>
-    </div> 
 
-    <script type="text/javascript" src="../../js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+            <form action="../../../app/tables/create.php" method="post">
+            
+                <!--Container da modal--> 
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Adicionando Mesa</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label for="numberTable" style="color: #000">Número da mesa</label>
+                        <input id="numberTable" type="number" class="form-control" name="number_table" placeholder="digite o número da mesa">
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button id="save" type="submit" class="btn btn-default btn-success">SALVAR</button>
+                        <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">CANCELAR</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../../public/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="js/mesas.js"></script> -->
 </body>
 </html>

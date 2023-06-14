@@ -60,3 +60,7 @@ img{
 ul{
 	padding:0px;;
 }
+
+#delete:hover {
+	text-decoration: none !important;
+}
