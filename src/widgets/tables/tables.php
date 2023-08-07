@@ -31,8 +31,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <div class="col-md-12 cabecalho">
                     <ul>
                         <li><a href="./tables.php"><img src="../../public/images/mesa.png" alt="">Mesas</a></li>
-                        <li><a href="../employees/employees.html"><img src="../../public/images/funcionario.png" alt="">Funcionário</a></li>
-                        <li><a href="../products/products.html"><img src="../../public/images/produto.png" alt="">Produtos</a></li>
+                        <li><a href="../employees/employees.php"><img src="../../public/images/funcionario.png" alt="">Funcionário</a></li>
+                        <li><a href="../products/products.php"><img src="../../public/images/produto.png" alt="">Produtos</a></li>
                         <li><a href="../../../app/login/logout.php"><img src="../../public/images/sair.png" alt="">Sair</a></li>
                     </ul>                  
                 </div>

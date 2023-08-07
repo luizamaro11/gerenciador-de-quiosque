@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($errors)) {
 
         // Prepare uma declaração selecionada
-        $sql = "SELECT id, user, password FROM users WHERE user = :user";
+        $sql = "SELECT id, user, password, access_level FROM users WHERE user = :user";
         
         if ($stmt = $pdo->prepare($sql)) {
 
@@ -57,8 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $id = $row["id"];
                         $username = $row["user"];
                         $hashed_password = $row["password"];
+                        $accessLevel = $row["access_level"];
 
-                        if (password_verify($password, $hashed_password)) {
+                        if (password_verify($password, $hashed_password) && $accessLevel == "administrador") {
 
                             // A senha está correta, então inicie uma nova sessão
                             session_start();
@@ -72,12 +73,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             header("location: ../../src/widgets/tables/tables.php");
                         } else {
                             // A senha não é válida, exibe uma mensagem de erro genérica
-                            $errors = "Nome de usuário ou senha inválidos.";
+                            $errors[] = "Nome de usuário ou senha ou nivel de acesso inválidos.";
                         }
                     }
                 } else {
                     // O nome de usuário não existe, exibe uma mensagem de erro genérica
-                    $errors = "Nome de usuário ou senha inválidos.";
+                    $errors[] = "Nome de usuário ou senha inválidos.";
                 }
             } else{
                 echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
@@ -90,4 +91,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Fechar conexão
     unset($pdo);
+}
+
+foreach ($errors as $value) {
+    echo "Erro: $value";
 }
